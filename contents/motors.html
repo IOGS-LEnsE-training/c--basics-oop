@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motors control &mdash; Nucleo Basics 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="LEDs control" href="leds.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Nucleo Basics
+              <img src="../_static/logo-training_git.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Embedded systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general.html">     Microcontrollers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polling_interrupts_rtos.html">     Polling vs Interrupts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nucleo.html">     Nucleo boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_project.html">     First project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="io.html"> Inputs and Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">     Events and Interrupts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exec_time.html">     Execution time</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External components</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="leds.html">     LEDs control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     Motors control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dc-motors">DC motors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#principle-of-operation">Principle of operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-conversion">Power conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#speed-control-with-pwm">Speed control with PWM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#stepper-motors">Stepper-motors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Principle of operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Power conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-control-without-driver">Step control without driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-driver">Using a driver</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#servomotors">Servomotors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Principle of operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-power">External Power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pwm-control">PWM control</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Next trainings</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://iogs-lense-training.github.io/nucleo-advanced/">Communication / Advanced</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nucleo Basics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Motors control</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/motors.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="motors-control">
+<h1>Motors control<a class="headerlink" href="#motors-control" title="Link to this heading"></a></h1>
+<section id="dc-motors">
+<h2>DC motors<a class="headerlink" href="#dc-motors" title="Link to this heading"></a></h2>
+<section id="principle-of-operation">
+<h3>Principle of operation<a class="headerlink" href="#principle-of-operation" title="Link to this heading"></a></h3>
+</section>
+<section id="power-conversion">
+<h3>Power conversion<a class="headerlink" href="#power-conversion" title="Link to this heading"></a></h3>
+</section>
+<section id="speed-control-with-pwm">
+<h3>Speed control with PWM<a class="headerlink" href="#speed-control-with-pwm" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="stepper-motors">
+<h2>Stepper-motors<a class="headerlink" href="#stepper-motors" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Principle of operation<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+</section>
+<section id="id2">
+<h3>Power conversion<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+</section>
+<section id="step-control-without-driver">
+<h3>Step control without driver<a class="headerlink" href="#step-control-without-driver" title="Link to this heading"></a></h3>
+</section>
+<section id="using-a-driver">
+<h3>Using a driver<a class="headerlink" href="#using-a-driver" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="servomotors">
+<h2>Servomotors<a class="headerlink" href="#servomotors" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>Principle of operation<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+</section>
+<section id="external-power">
+<h3>External Power<a class="headerlink" href="#external-power" title="Link to this heading"></a></h3>
+</section>
+<section id="pwm-control">
+<h3>PWM control<a class="headerlink" href="#pwm-control" title="Link to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="leds.html" class="btn btn-neutral float-left" title="LEDs control" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Julien Villemejane.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

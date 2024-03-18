@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nucleo boards and STM32 MCU &mdash; Nucleo Basics 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MBED Compiler and Keil Studio IDE" href="gen_mbed_keil.html" />
+    <link rel="prev" title="Nucleo boards from STMicroelectronics" href="nucleo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Nucleo Basics
+              <img src="../_static/logo-training_git.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Embedded systems</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="general.html">     Microcontrollers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polling_interrupts_rtos.html">     Polling vs Interrupts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nucleo.html">     Nucleo boards</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nucleo boards and STM32 MCU</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rapid-prototyping-board">Rapid prototyping board</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pinouts-of-some-boards">Pinouts of some boards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#g431kb-board-nucleo-32">G431KB board - Nucleo-32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#l476rg-board-nucleo-64">L476RG board - Nucleo-64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f767zi-board-nucleo-144">F767ZI board - Nucleo-144</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gen_mbed_keil.html">     MBED OS and Keil IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nucleo.html#other-ressources">Other ressources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="first_project.html">     First project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="io.html"> Inputs and Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">     Events and Interrupts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exec_time.html">     Execution time</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="leds.html">     LEDs control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motors.html">     Motors control</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Next trainings</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://iogs-lense-training.github.io/nucleo-advanced/">Communication / Advanced</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nucleo Basics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="nucleo.html">Nucleo boards from STMicroelectronics</a></li>
+      <li class="breadcrumb-item active">Nucleo boards and STM32 MCU</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/gen_nucleo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nucleo-boards-and-stm32-mcu">
+<h1>Nucleo boards and STM32 MCU<a class="headerlink" href="#nucleo-boards-and-stm32-mcu" title="Link to this heading"></a></h1>
+<section id="rapid-prototyping-board">
+<h2>Rapid prototyping board<a class="headerlink" href="#rapid-prototyping-board" title="Link to this heading"></a></h2>
+<p>Nucleo boards are a series of <strong>development boards</strong> designed by <a class="reference external" href="https://www.st.com/content/st_com/en.html">STMicroelectronics</a>. They are specifically tailored for <strong>rapid prototyping</strong> and <strong>easy development</strong> of microcontroller-based projects.</p>
+<p>Nucleo boards typically feature an <strong>STM32</strong> microcontroller unit (MCU) as their core component, which belongs to the ARM® Cortex-M® family.</p>
+<p>IMAGE NUCLEO BOARD</p>
+<p>These boards offer a variety of features such as on-board debugging and programming interfaces, multiple <abbr>GPIO (General Purpose Input/Output</abbr> pins, integrated sensors, connectivity options, as well as expansion headers for <strong>connecting additional hardware modules</strong>.</p>
+<p>Nucleo boards are popular among hobbyists, students, and professional developers due to their affordability, versatility, and ease of use. Different <strong>integrated development environment (IDE)</strong> support could be used to develop program for <strong>STM32</strong> MCU:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.st.com/en/ecosystems/stm32cube.html">STM32CubeMX / STM32CubeIDE</a></p></li>
+<li><p>Keil µVision</p></li>
+<li><p><a class="reference external" href="https://os.mbed.com/studio/">MBED Studio</a> / <a class="reference external" href="https://www.keil.arm.com/">Keil Studio Cloud</a></p></li>
+</ul>
+<p>Nucleo boards serve as a <strong>convenient platform</strong> for learning embedded systems programming, experimenting with various sensors and peripherals, and prototyping IoT (Internet of Things) applications.</p>
+</section>
+</section>
+<section id="pinouts-of-some-boards">
+<h1>Pinouts of some boards<a class="headerlink" href="#pinouts-of-some-boards" title="Link to this heading"></a></h1>
+<section id="g431kb-board-nucleo-32">
+<span id="nucleo-g431kb-pinouts"></span><h2>G431KB board - Nucleo-32<a class="headerlink" href="#g431kb-board-nucleo-32" title="Link to this heading"></a></h2>
+<p>PICTURE OF PINOUT</p>
+</section>
+<section id="l476rg-board-nucleo-64">
+<span id="nucleo-l476rg-pinouts"></span><h2>L476RG board - Nucleo-64<a class="headerlink" href="#l476rg-board-nucleo-64" title="Link to this heading"></a></h2>
+<p>PICTURE OF PINOUT</p>
+</section>
+<section id="f767zi-board-nucleo-144">
+<span id="nucleo-f767zi-pinouts"></span><h2>F767ZI board - Nucleo-144<a class="headerlink" href="#f767zi-board-nucleo-144" title="Link to this heading"></a></h2>
+<p>PICTURE OF PINOUT</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nucleo.html" class="btn btn-neutral float-left" title="Nucleo boards from STMicroelectronics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gen_mbed_keil.html" class="btn btn-neutral float-right" title="MBED Compiler and Keil Studio IDE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Julien Villemejane.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
