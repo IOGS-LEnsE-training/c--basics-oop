@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+@see : https://www.learncpp.com/#google_vignette
+
 C++ - Basics and Object-Oriented Programming
 ############################################
 
